@@ -202,6 +202,50 @@ header.site, .hero, #runners, #links, footer {
   .chat-btn::after{ inset:-10px; filter: blur(7px); }
 }
 
+/* ランナー紹介：左ボタン / 右プレビュー */
+.runner-split{
+  display:grid; gap:16px;
+  grid-template-columns: 1fr 2fr;   /* 右を広く＝“右半分に表示”の見え方 */
+}
+@media (max-width: 900px){
+  .runner-split{ grid-template-columns: 1fr; }
+}
+
+.runner-list{
+  display:flex; flex-direction:column; gap:10px;
+}
+.runner-btn{
+  display:flex; align-items:center; gap:10px;
+  padding:10px; border-radius:14px; border:1px solid rgba(0,0,0,.08);
+  background:#fff; box-shadow: var(--shadow); cursor:pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.runner-btn:hover{ transform: translateY(-1px); box-shadow: 0 10px 28px rgba(0,0,0,.16); }
+.runner-btn img{
+  width:56px; height:56px; border-radius:50%; object-fit:cover;
+}
+.runner-btn span{ font-weight:800; }
+
+.runner-preview{
+  position:relative; overflow:hidden; min-height: 340px;
+}
+.runner-preview img{
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:cover; object-position:center right; 
+  /* 右寄せ配置＝“右側に大きく表示” */
+  transition: transform .35s ease;
+}
+.runner-preview::after{ /* 右側強調のグラデで読みやすく */
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(90deg, rgba(255,255,255,.6) 0%, rgba(255,255,255,0) 40%);
+  pointer-events:none;
+}
+.runner-caption{
+  position:absolute; left:16px; bottom:16px;
+  background: rgba(255,255,255,.85); padding:8px 12px;
+  border-radius:12px; border:1px solid rgba(0,0,0,.06);
+  box-shadow: var(--shadow);
+}
 </style>
 </head>
 <body>
@@ -231,10 +275,33 @@ header.site, .hero, #runners, #links, footer {
     </div>
   </section>
   <section id="runners">
-    <div class="container">
-      <div class="grid cols-3" id="runnerGrid"></div>
+  <div class="container">
+    <div class="runner-split">
+      <!-- 左：ランナーのボタン -->
+      <div class="runner-list">
+        <button class="runner-btn" data-name="yonechan" data-img="assets/IMG_0973.jpg">
+          <img src="assets/IMG_0973.jpg" alt="yonechan"><span>yonechan</span>
+        </button>
+        <button class="runner-btn" data-name="ばんび" data-img="assets/IMG_0975.jpg">
+          <img src="assets/IMG_0975.jpg" alt="ばんび"><span>ばんび</span>
+        </button>
+        <button class="runner-btn" data-name="Happy⭐MOAI" data-img="assets/IMG_0974.jpg">
+          <img src="assets/IMG_0974.jpg" alt="Happy⭐MOAI"><span>Happy⭐MOAI</span>
+        </button>
+      </div>
+
+      <!-- 右：プレビュー（右側に大きく表示） -->
+      <div class="runner-preview card">
+        <img id="runnerPreviewImg" src="assets/IMG_0973.jpg" alt="" />
+        <div class="runner-caption">
+          <strong id="runnerPreviewName">yonechan</strong>
+          <small>セブダオ神戸マラソン部</small>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
   <section id="links">
     <div class="container grid" style="gap:18px">
       <div class="card link-item">
@@ -282,6 +349,22 @@ header.site, .hero, #runners, #links, footer {
     updateCountdown();
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script>
+  // ランナーボタン → 右プレビュー切替
+  const previewImg  = document.getElementById('runnerPreviewImg');
+  const previewName = document.getElementById('runnerPreviewName');
+  document.querySelectorAll('.runner-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const src  = btn.getAttribute('data-img');
+      const name = btn.getAttribute('data-name');
+      previewImg.style.transform = 'scale(1.02)';
+      previewImg.src = src;
+      previewName.textContent = name;
+      setTimeout(()=> previewImg.style.transform = 'scale(1)', 220);
+    });
+  });
+</script>
+
   <script>
     // 背景画像のパス自動検出（日本語ファイル名・配置場所揺れ対策）
     (function(){
