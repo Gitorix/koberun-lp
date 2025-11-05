@@ -2,214 +2,279 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <title>セブダオ神戸マラソン部 | ランナー紹介LP</title>
+    <title>CEBUDAE KOBE MARATHON CLUB</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-  :root {
-    --shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-    --bg: #e6edf4;
-  }
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: var(--bg);
-  }
-  .hero-bg {
-    background: url("assets/bg-kobe.png") center top / cover no-repeat;
-    min-height: 260px;
-  }
-  .site-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 16px;
-  }
-  header {
-    padding: 18px 0 0;
-  }
-  .title-title {
-    font-size: 42px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    line-height: 1.1;
-    margin-bottom: 6px;
-    color: #fff;
-    text-shadow: 0 3px 18px rgba(0, 0, 0, 0.24);
-  }
-  .sublead {
-    color: rgba(255, 255, 255, 0.84);
-    margin-bottom: 24px;
-  }
+      :root {
+        --shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+        --bg: #e6edf4;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont,"Segoe UI",sans-serif;
+        background: var(--bg);
+      }
 
-  /* カウントダウン風の3つの箱 */
-  .count-boxes {
-    display: flex;
-    gap: 16px;
-  }
-  .count-box {
-    background: #fff;
-    border-radius: 16px;
-    padding: 14px 18px;
-    width: 160px;
-    box-shadow: var(--shadow);
-    text-align: center;
-  }
-  .count-box .num {
-    font-size: 28px;
-    font-weight: 700;
-  }
-  .count-box .label {
-    font-size: 12px;
-    letter-spacing: 0.25em;
-    color: #555;
-  }
+      /* 背景のヒーロー部分 */
+      .hero-bg {
+        background: url("assets/bg-kobe.png") center top / cover no-repeat;
+        min-height: 260px;
+      }
+      .site-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
 
-  /* ランナー紹介 */
-#runners {
-  margin-top: 20px;
-  padding-bottom: 40px;
-}
+      header {
+        padding: 18px 0 0;
+      }
+      .top-badge {
+        color: #fff;
+        margin-bottom: 4px;
+        font-weight: 500;
+      }
+      .title-title {
+        font-size: 40px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: #fff;
+        text-shadow: 0 3px 20px rgba(0,0,0,.25);
+        margin-bottom: 6px;
+      }
+      .sublead {
+        color: rgba(255,255,255,0.85);
+        margin-bottom: 20px;
+      }
+      .top-nav {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+      .top-nav button {
+        border: none;
+        background: #fff;
+        border-radius: 9999px;
+        padding: 6px 16px;
+        cursor: pointer;
+        font-weight: 600;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      }
+      .top-nav button.primary {
+        background: #f8a507;
+        color: #fff;
+      }
 
-.runner-shell {
-  display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  gap: 18px;
-  align-items: stretch;
-}
+      /* カウントダウンの箱 */
+      .count-boxes {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 26px;
+      }
+      .count-box {
+        background: #fff;
+        border-radius: 16px;
+        padding: 14px 18px;
+        width: 160px;
+        text-align: center;
+        box-shadow: var(--shadow);
+      }
+      .count-box .num {
+        font-size: 28px;
+        font-weight: 700;
+      }
+      .count-box .label {
+        font-size: 12px;
+        letter-spacing: .25em;
+        color: #444;
+      }
 
-/* 左のボタン3つ */
-.runner-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+      /* ランナー紹介 */
+      #runners {
+        margin-top: -40px; /* 元の位置に近づける */
+        padding-bottom: 40px;
+      }
+      .runner-shell {
+        background: rgba(230,237,244,0);
+        display: grid;
+        grid-template-columns: 280px minmax(0,1fr);
+        gap: 18px;
+        align-items: stretch;
+      }
+      /* 左のリスト */
+      .runner-list {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .runner-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 10px 14px;
+        box-shadow: var(--shadow);
+        border: 2px solid transparent;
+        cursor: pointer;
+      }
+      .runner-btn.active {
+        border-color: #1060ff;
+      }
+      .runner-btn .runner-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 9999px;
+        overflow: hidden;
+      }
+      .runner-btn .runner-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .runner-btn .txt {
+        font-weight: 600;
+      }
 
-.runner-btn {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: #fff;
-  border-radius: 16px;
-  padding: 10px 14px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-  border: 2px solid transparent;
-  cursor: pointer;
-}
-.runner-btn.active {
-  border-color: #1060ff;
-}
+      /* 右のカード（赤 + 黒）*/
+      .runner-preview {
+        position: relative;
+        background: #fff;
+        border-radius: 30px;
+        box-shadow: var(--shadow);
+        min-height: 250px;
+        overflow: hidden;
+      }
+      .runner-preview-inner {
+        position: relative;
+        min-height: 250px;
+      }
+      .runner-preview-top {
+        position: absolute;
+        inset: 0;
+        height: 55%;
+        background: #b43b3b;
+      }
+      .runner-preview-bottom {
+        position: absolute;
+        inset: auto 0 0 0;
+        height: 45%;
+        background: rgba(0,0,0,0.85);
+      }
 
-/* 右の大きいカード */
-.runner-preview {
-  position: relative;
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-  min-height: 250px;
-  overflow: hidden;
-}
-.runner-preview-inner {
-  position: relative;
-  height: 100%;
-  min-height: 250px;
-}
+      /* 左の丸アイコン */
+      .runner-photo {
+        position: absolute;
+        left: 48px;
+        top: 58px;
+        width: 120px;
+        height: 120px;
+        border-radius: 9999px;
+        overflow: hidden;
+        border: 6px solid rgba(0,0,0,0.25);
+        background: #ddd;
+        z-index: 6;
+      }
+      .runner-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      /* 名前の帯 */
+      .runner-nameband {
+        position: absolute;
+        bottom: 26px;
+        left: 48px;
+        background: rgba(0,0,0,0.36);
+        border-radius: 14px;
+        padding: 8px 18px;
+        color: #fff;
+        font-weight: 600;
+        z-index: 6;
+        white-space: nowrap;
+      }
 
-/* 上：赤帯 */
-.runner-preview-top {
-  position: absolute;
-  inset: 0;
-  height: 55%;
-  background: #b43b3b;
-}
-/* 下：黒帯 */
-.runner-preview-bottom {
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 45%;
-  background: rgba(0, 0, 0, 0.82);
-}
+      /* ハーフマラソン記録の白い帯 */
+      #record-label {
+        position: absolute;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255,255,255,0.95);
+        color: #000;
+        padding: 8px 24px;
+        border-radius: 9999px;
+        font-weight: 700;
+        font-size: 14px;
+        z-index: 7;
+        pointer-events: none;
+      }
 
-/* 左の丸アイコン */
-.runner-photo {
-  position: absolute;
-  left: 42px;
-  top: 46px;
-  width: 115px;
-  height: 115px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 6px solid rgba(0, 0, 0, 0.25);
-  background: #ddd;
-  z-index: 6;
-}
-.runner-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+      /* 記録画像 */
+      #record-photo {
+        position: absolute;
+        top: 70px;
+        right: 40px;
+        width: 360px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 12px 25px rgba(0,0,0,0.28);
+        z-index: 5;
+        pointer-events: none;
+      }
+      #record-photo img {
+        width: 100%;
+        display: block;
+      }
 
-/* 名前の帯 */
-.runner-nameband {
-  position: absolute;
-  left: 42px;
-  bottom: 26px;
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 12px;
-  padding: 7px 16px;
-  color: #fff;
-  font-weight: 600;
-  z-index: 6;
-}
+      /* 下のリンクカード */
+      #links {
+        margin-top: 24px;
+        display: grid;
+        gap: 14px;
+      }
+      .link-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 18px 16px;
+        box-shadow: var(--shadow);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .link-card .meta small { color: #666; }
+      .link-card .btn {
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.12);
+        border-radius: 9999px;
+        padding: 6px 14px;
+        cursor: pointer;
+      }
 
-/* ハーフマラソン記録の白い帯 */
-#record-label {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.95);
-  color: #000;
-  padding: 8px 22px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 14px;
-  z-index: 7;
-  pointer-events: none;
-}
-
-/* 記録の写真 */
-#record-photo {
-  position: absolute;
-  top: 70px;
-  right: 40px;
-  width: 340px;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
-  z-index: 5;
-  pointer-events: none;
-}
-#record-photo img {
-  width: 100%;
-  display: block;
-}
-
-</style>
-
+      @media (max-width: 880px) {
+        .runner-shell { grid-template-columns: 1fr; }
+        .runner-preview { min-height: 380px; }
+        #record-photo {
+          position: static;
+          width: 90%;
+          margin: 160px auto 16px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="hero-bg">
       <div class="site-inner">
         <header>
-          <p style="color: #fff; font-weight: 500; margin-bottom: 2px">
-            🟠 セブダオ神戸マラソン部
-          </p>
+          <p class="top-badge">● セブダオ神戸マラソン部</p>
           <h1 class="title-title">CEBUDAE KOBE MARATHON CLUB</h1>
-          <p class="sublead">
-            走る仲間がいる。走る理由がある。公式情報とコミュニティの窓口、そして当日までのカウントダウン。
-          </p>
+          <p class="sublead">走る仲間がいる。走る理由がある。公式情報とコミュニティの窓口、そして当日までのカウントダウン。</p>
+          <div class="top-nav">
+            <button class="primary">チャットで応援する</button>
+            <button>ランナー紹介</button>
+            <button>リンク</button>
+          </div>
           <div class="count-boxes">
             <div class="count-box">
               <div class="num">13</div>
@@ -234,150 +299,124 @@
         <div class="runner-shell">
           <!-- 左の3人 -->
           <div class="runner-list">
-  <button
-  class="runner-btn active"
-  data-name="yonechan"
-  data-sub="セブダオ神戸マラソン部"
-  data-avatar="assets/IMG_0973.jpg"
-  data-record-img="assets/IMG_0948.jpg"
->
-  yonechan
-</button>
+            <button
+              class="runner-btn active"
+              data-name="yonechan"
+              data-sub="セブダオ神戸マラソン部"
+              data-avatar="assets/IMG_0973.jpg"
+              data-record-img="assets/IMG_0948.jpg"
+            >
+              <div class="runner-avatar">
+                <img src="assets/IMG_0973.jpg" alt="">
+              </div>
+              <div class="txt">yonechan</div>
+            </button>
 
-<button
-  class="runner-btn"
-  data-name="ばんび"
-  data-sub="セブダオ神戸マラソン部"
-  data-avatar="assets/IMG_0975.jpg"
-  data-record-img="assets/record_banbi.jpg"
->
-  ばんび
-</button>
+            <button
+              class="runner-btn"
+              data-name="ばんび"
+              data-sub="セブダオ神戸マラソン部"
+              data-avatar="assets/IMG_0975.jpg"
+              data-record-img="assets/record_banbi.jpg"
+            >
+              <div class="runner-avatar">
+                <img src="assets/IMG_0975.jpg" alt="">
+              </div>
+              <div class="txt">ばんび</div>
+            </button>
 
-<button
-  class="runner-btn"
-  data-name="Happy⭐︎MOAI"
-  data-sub="セブダオ神戸マラソン部"
-  data-avatar="assets/IMG_0974.jpg"
-  data-record-img="assets/record_moai.jpg"
->
-  Happy⭐︎MOAI
-</button>
-
-</div>
-
-
-      <!-- 右の大きいプレビュー -->
-      <div class="runner-preview">
-        <div class="runner-preview-inner">
-          <div class="runner-preview-top"></div>
-          <div class="runner-preview-bottom"></div>
-
-          <!-- 左下の丸アイコン -->
-          <div class="runner-photo">
-            <img id="previewAvatar" src="assets/IMG_0973.jpg" alt="">
+            <button
+              class="runner-btn"
+              data-name="Happy⭐︎MOAI"
+              data-sub="セブダオ神戸マラソン部"
+              data-avatar="assets/IMG_0974.jpg"
+              data-record-img="assets/record_moai.jpg"
+            >
+              <div class="runner-avatar">
+                <img src="assets/IMG_0974.jpg" alt="">
+              </div>
+              <div class="txt">Happy⭐︎MOAI</div>
+            </button>
           </div>
 
-          <!-- 名前の帯 -->
-          <div class="runner-nameband" id="previewName">
-            yonechan セブダオ神戸マラソン部
-          </div>
+          <!-- 右の大きいプレビュー -->
+          <div class="runner-preview">
+            <div class="runner-preview-inner">
+              <div class="runner-preview-top"></div>
+              <div class="runner-preview-bottom"></div>
 
-          <!-- ハーフマラソン記録（白いラベル） -->
-          <div id="record-label">ハーフマラソン記録</div>
+              <div class="runner-photo">
+                <img id="previewAvatar" src="assets/IMG_0973.jpg" alt="">
+              </div>
 
-          <!-- 記録の画像を出すところ -->
-          <div id="record-photo">
-            <img id="record-photo-img" src="assets/IMG_0948.jpg" alt="記録写真">
+              <div class="runner-nameband" id="previewName">
+                yonechan セブダオ神戸マラソン部
+              </div>
+
+              <div id="record-label">ハーフマラソン記録</div>
+              <div id="record-photo">
+                <img id="record-photo-img" src="assets/IMG_0948.jpg" alt="記録写真">
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- ここまでがランナー紹介 -->
+      </section>
+
       <!-- 下のリンク -->
       <section id="links">
         <div class="link-card">
           <div class="meta">
-            <div style="font-weight: 700">神戸マラソン 公式サイト</div>
+            <div style="font-weight:800;">神戸マラソン 公式サイト</div>
             <small>大会情報・コース・交通規制などの最新情報</small>
           </div>
-          <a class="btn" href="https://kobe-marathon.net/2025/" target="_blank"
-            >開く</a
-          >
+          <a class="btn" href="https://kobe-marathon.net/2025/" target="_blank" rel="noopener">開く</a>
         </div>
+
         <div class="link-card">
           <div class="meta">
-            <div style="font-weight: 700">セブダオ神戸マラソン部 チャット</div>
+            <div style="font-weight:800;">セブダオ神戸マラソン部 チャット</div>
             <small>参加者・応援のやり取り（Discord）</small>
           </div>
-          <a
-            class="btn"
-            href="https://discord.com/channels/823445...（ご自身のURL）"
-            target="_blank"
-            >開く</a
-          >
+          <a class="btn" href="https://discord.com" target="_blank" rel="noopener">開く</a>
         </div>
       </section>
     </main>
 
     <script>
-      // 左のボタンをクリックしたら右に反映するやつ
-      const runnerButtons = document.querySelectorAll(".runner-btn");
-      const previewName = document.getElementById("previewName");
-      const previewAvatar = document.getElementById("previewAvatar");
+      const buttons = document.querySelectorAll('.runner-btn');
+      const previewName = document.getElementById('previewName');
+      const previewAvatar = document.getElementById('previewAvatar');
+      const recordImg = document.getElementById('record-photo-img');
+      const recordLabel = document.getElementById('record-label');
+      const recordPhoto = document.getElementById('record-photo');
 
-      runnerButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          // activeの付け替え
-          runnerButtons.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // active切替
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
 
-          // 右に表示する名前＋所属
-          const name = btn.dataset.name;
-          const sub = btn.dataset.sub;
-          const avatar = btn.dataset.avatar || "assets/IMG_0973.jpg";
+          // 名前と肩書き
+          const name = btn.dataset.name || '';
+          const sub = btn.dataset.sub || '';
+          previewName.textContent = name + ' ' + sub;
 
-          previewName.textContent = name + " " + sub;
-          previewAvatar.src = avatar;
+          // アイコン
+          if (btn.dataset.avatar) {
+            previewAvatar.src = btn.dataset.avatar;
+          }
+
+          // 記録画像
+          if (btn.dataset.recordImg) {
+            recordImg.src = btn.dataset.recordImg;
+            recordLabel.style.display = 'block';
+            recordPhoto.style.display = 'block';
+          } else {
+            recordLabel.style.display = 'none';
+            recordPhoto.style.display = 'none';
+          }
         });
       });
     </script>
- <script>
-  // 左のボタン全部を取得
-  const buttons = document.querySelectorAll('.runner-btn');
-
-  // 右の表示領域を取得
-  const previewName = document.getElementById('previewName');
-  const previewAvatar = document.getElementById('previewAvatar');
-  const recordLabel = document.getElementById('record-label');
-  const recordPhoto = document.getElementById('record-photo');
-  const recordImg = document.getElementById('record-photo-img');
-
-  buttons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      // ① アクティブ表示
-      buttons.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      // ② 名前とアイコン切り替え
-      const name = btn.dataset.name || '';
-      const sub = btn.dataset.sub || '';
-      const avatar = btn.dataset.avatar || '';
-      previewName.textContent = name + ' ' + sub;
-      if (avatar) previewAvatar.src = avatar;
-
-      // ③ 記録写真切り替え
-      const record = btn.dataset.recordImg;
-      if (record) {
-        recordImg.src = record;
-        recordLabel.style.display = 'flex';
-        recordPhoto.style.display = 'block';
-      } else {
-        recordLabel.style.display = 'none';
-        recordPhoto.style.display = 'none';
-      }
-    });
-  });
-</script>
-
-</body>
+  </body>
 </html>
