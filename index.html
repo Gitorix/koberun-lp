@@ -1,708 +1,571 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-<<<<<<< HEAD
-  <head>
-    <meta charset="utf-8" />
-    <title>CEBUDAE KOBE MARATHON CLUB</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      :root {
-        --shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-=======
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>セブダオ神戸マラソン部 | ランナー紹介LP</title>
-  <meta name="description" content="セブダオ神戸マラソン部のランナー紹介、神戸マラソン公式リンク、コミュニティチャット、当日までのカウントダウン。" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>セブダオ神戸マラソン部｜ランナー紹介</title>
   <style>
-    :root {
-      --brand:#0f2648;
-      --brand-2:#1b4b82;
-      --accent:#f18f01;
-      --ink:#0e1116;
-      --paper:#f7f5ef;
-      --glass: rgba(247,245,239,.7);
-      --radius: 18px;
-      --shadow: 0 8px 30px rgba(0,0,0,.18);
+    /* 全体のリセットと背景 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    * { box-sizing: border-box; }
-    html,body { height: 100%; }
     body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans JP, Helvetica, Arial;
-  color: var(--ink);
-  line-height: 1.6;
-  background: #f7f5ef;
-  background-image: url('assets/bg-kobe.png');   /* ← ① 背景画像を指定 */
-  background-size: cover;                        /* ← ② ページ全体に広げる */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;                  /* 背景をスクロールで固定 */
-  opacity: 0.95;                                 /* 少し透かす */
-}
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", sans-serif;
+  min-height: 100vh;
 
-    a { color: var(--brand-2); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-/* === 背景（神戸画像） === */
-.hero-bg {
-  position: fixed;
-  inset: 0;
-  background: center / cover no-repeat url('./assets/bg-kobe.png?v=2'); /* ← 神戸画像 */
-  opacity: 0.6;   /* 60%透明 */
-  z-index: -1;    /* 背景として一番下へ */
-}
+  /* 🎨 神戸のイラスト背景（正しい位置パス） */
+  background: #f5f4f2 url("bg-kobe.png") center bottom / cover no-repeat fixed;
 
-/* 本文を背景より上に出す（重要） */
-header.site, .hero, #runners, #links, footer {
-  position: relative;
-  z-index: 10;  /* 背景より確実に上 */
+  color: #003a5a;
 }
 
 
-   
-    .container { width: min(1100px, 92vw); margin: 0 auto; }
-    header.site { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px);
-      background: color-mix(in oklab, var(--glass) 80%, white 20%); border-bottom: 1px solid rgba(0,0,0,.06); }
-    .site-inner { display:flex; align-items:center; gap: 14px; padding: 10px 16px; }
-    .logo-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(241,143,1,.25); }
-    .site-title { font-weight: 800; letter-spacing: .02em; }
-    .nav { margin-left: auto; display:flex; gap: 12px; flex-wrap: wrap; }
-    .btn { display:inline-flex; align-items:center; gap:.5em; padding:10px 14px; border-radius: 999px; border:1px solid rgba(0,0,0,.08); background: white; box-shadow: var(--shadow); font-weight: 700; }
-    .btn.primary { background: var(--accent); color: #132; border: none; }
-    .btn.ghost { background: rgba(255,255,255,.75); }
-    .hero { padding: 8vh 0 6vh; color: #fff; text-shadow: 0 2px 24px rgba(0,0,0,.45); }
-    .hero h1 { font-size: clamp(28px, 5vw, 56px); line-height: 1.08; margin: 8px 0 8px; }
-    .hero p.sub { font-size: clamp(14px, 2.3vw, 18px); opacity: .95; margin: 0 0 18px; }
-    .hero .cta-row { display:flex; gap: 12px; flex-wrap: wrap; }
-    .clock { margin: 28px 0 0; display:flex; gap: 10px; flex-wrap: wrap; }
-    .tick { flex: 1 1 120px; min-width: 120px; background: rgba(255,255,255,.86); color: var(--ink);
-      border-radius: var(--radius); padding: 16px; text-align: center; box-shadow: var(--shadow); }
-    .tick .num { font-variant-numeric: tabular-nums; font-size: 34px; font-weight: 900; }
-    .tick .lab { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; opacity: .65; }
-    section { padding: 48px 0; }
-    .card { background: rgba(255,255,255,.92); border: 1px solid rgba(0,0,0,.06); border-radius: var(--radius); box-shadow: var(--shadow); }
-    .grid { display:grid; gap:16px; }
-    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
-    @media (max-width: 900px) { .grid.cols-3 { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 620px) { .grid.cols-3 { grid-template-columns: 1fr; } }
-    .runner { display:flex; gap:14px; padding:16px; align-items: center; }
-    .runner img { width: 84px; height: 84px; border-radius: 16px; object-fit: cover; background: #e6e6e6; }
-    .runner .meta { flex: 1; }
-    .runner .name { font-weight: 800; margin: 2px 0 6px; }
-    .runner .bio { margin: 0; font-size: 14px; color: #333; }
-    .runner .tags { margin-top: 8px; display:flex; flex-wrap: wrap; gap:6px; }
-    .tag { font-size: 12px; background: #eef3fb; color: var(--brand); border:1px solid #cfe0fa; padding:4px 8px; border-radius: 999px; }
-    .link-item { padding: 16px; display:flex; justify-content: space-between; align-items: center; }
-    .gallery { display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-    .gallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 14px; }
-    @media (max-width: 800px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
-    footer { padding: 36px 0 80px; color: #fff; text-align: center; }
-    footer .foot-card { display:inline-block; padding: 12px 16px; border-radius: 999px; background: rgba(0,0,0,.35); }
-  /* 🎨 チャットボタンのロゴ画像をきれいに見せる */
 
-/* 🎨 RunninguClub ロゴボタンの調整版 */
-.chat-btn{
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 8px;
-  background: transparent;
-  border: none;
-  box-shadow: none;
+    /* 全体を包んでるところをもっと白く */
+.overlay {
+  background: rgba(255, 255, 255, 0.9);  /* ← 0.6 → 0.9 にしてくっきり */
+  min-height: 100vh;
+  padding: 16px 14px 60px;
 }
 
-.chat-logo{
+/* カードもはっきりした面にする */
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 58, 90, 0.05);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 16px;
+  backdrop-filter: none; /* ぼかしを切って、はっきりさせる */
+}
+
+/* 見出しっぽい色に寄せるなら */
+header h1 {
+  color: #003a5a;
+}
+header p {
+  color: rgba(0, 58, 90, 0.7);
+}
+
+    .countdown {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+    }
+    .cd-item {
+      flex: 1;
+      text-align: center;
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 8px 4px;
+    }
+    .cd-num {
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .cd-label {
+      font-size: .6rem;
+      opacity: .85;
+      margin-top: 4px;
+      letter-spacing: .05em;
+    }
+
+    /* ボタンリンク（公式・チャット） */
+    .link-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .link-btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      background: radial-gradient(circle at top, rgba(151,230,255,1), rgba(0,129,194,0.3));
+      border: 1px solid rgba(151,230,255,0.3);
+      color: #fff;
+      padding: 11px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .82rem;
+      box-shadow: 0 0 12px rgba(151,230,255,0.42);
+      backdrop-filter: blur(3px);
+    }
+    .link-btn.sub {
+      background: rgba(0,129,194,0.16);
+      border-color: rgba(151,230,255,0.15);
+      box-shadow: none;
+    }
+
+    /* 選手紹介 */
+    .runners-wrapper {
+      display: flex;
+      gap: 10px;
+    }
+    .runner-list {
+      display: flex;
+      gap: 8px;
+      flex: 1;
+    }
+    .runner-card {
+      flex: 1;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 10px;
+      padding: 8px 6px;
+      text-align: center;
+      cursor: pointer;
+      transition: .2s;
+    }
+    .runner-card.active {
+      background: rgba(151,230,255,0.12);
+      border-color: rgba(151,230,255,.6);
+      box-shadow: 0 0 8px rgba(151,230,255,0.35);
+    }
+    .runner-name {
+      font-size: .7rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .runner-meta {
+      font-size: .55rem;
+      opacity: .85;
+    }
+
+    /* プレビュー（タイム画像表示するところ） */
+    .preview {
+      margin-top: 12px;
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.03);
+      border-radius: 12px;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+    }
+    .preview img {
+      max-width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .preview-placeholder {
+      font-size: .65rem;
+      opacity: .7;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* 小さめ画面対応 */
+    @media (min-width: 600px) {
+      .overlay {
+        width: min(560px, 100%);
+        margin: 0 auto;
+      }
+    }
+  .logo {
+  width: 80px;
   display: block;
-  height: 48px;               /* ← 小さめ（他のボタンと並ぶサイズ） */
-  aspect-ratio: auto;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,.25));
-  transition: transform .2s ease;
+  margin: 0 auto 6px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.1);
+  padding: 6px;
 }
-
-.chat-btn:hover .chat-logo{
-  transform: scale(1.05);
+.card {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
-
-/* 黄色い発光の点滅（控えめ版） */
-.chat-btn::after{
-  content:"";
-  position:absolute;
-  inset:-6px;
-  border-radius:9999px;
-  background: radial-gradient(circle,
-              rgba(255,230,0,.35) 0%,
-              rgba(255,230,0,.2) 35%,
-              rgba(255,230,0,.1) 60%,
-              rgba(255,230,0,0) 75%);
-  filter: blur(5px);
-  animation: glowPulse 2s ease-in-out infinite;
-  pointer-events: none;
-  z-index: -1;
-}
-
-@keyframes glowPulse{
-  0%,100% { opacity:.2; transform:scale(0.96);}
-  50%     { opacity:.6; transform:scale(1.04);}
-}
-
-@media (max-width:520px){
-  .chat-logo{ height:40px; }
-}
-/* --- チャットの画像ボタン（赤枠くらいのサイズ＆発光） --- */
-.link-item { overflow: visible; } /* 発光がカード外にはみ出しても見えるように */
-
-.chat-btn{
+/* ① ヘッダーのロゴを左右にトコトコさせる（青枠） */
+header {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;                 /* 余白なしでロゴをそのまま見せる */
-  background: transparent;    /* オレンジ背景なし */
-  border: none;
-  box-shadow: none;
-  z-index: 1;                 /* 発光より手前に */
+  text-align: center; 
+  padding-top: 40px;         /* ②でやりたい「中央揃え」もここで */
 }
-
-/* --- チャットの画像ボタン（2回り大きく＆光る） --- */
-.chat-logo{
+.logo {
+  width: 80px;
   display: block;
-  height: 80px;               /* ← 赤枠より約1.25倍大きく調整 */
-  width: auto;
-  filter: drop-shadow(0 3px 6px rgba(0,0,0,.25));
-  transition: transform .18s ease;
+  margin: 0 auto 6px;
+  animation: walk-logo 6s ease-in-out infinite;
+}
+@keyframes walk-logo {
+  0%   { transform: translateX(-40px); }
+  50%  { transform: translateX(40px); }
+  100% { transform: translateX(-40px); }
 }
 
-/* --- 強めの黄色い発光（主張アップ） --- */
-.chat-btn::after{
+/* ② 見出しと日付を全部中央揃え（赤枠） */
+header h1,
+header p {
+  text-align: center;
+  color: #003a5a;
+}
+
+/* ③ ボタンをはっきり＋淡く点滅（緑枠） */
+.link-btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background: linear-gradient(120deg, #0090d0, #4ad4ff);
+  color: #fff;
+  padding: 11px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .82rem;
+  border: none;
+  box-shadow: 0 0 14px rgba(0,144,208,0.35);
+  animation: btn-pulse 2.4s ease-in-out infinite;
+}
+.link-btn.sub {
+  background: rgba(0,144,208,0.15);
+  color: #003a5a;
+  border: 1px solid rgba(0,144,208,0.25);
+  animation: none;  /* 下のボタンは点滅なしにしておくならこれでOK */
+}
+@keyframes btn-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 14px rgba(0,144,208,0.35); }
+  50%      { opacity: .8; box-shadow: 0 0 20px rgba(0,144,208,0.6); }
+}
+
+/* ④ 全体を海っぽい青基調にして、背景イラストを透けさせる（黄色枠） */
+.overlay {
+  background: rgba(0, 63, 97, 0.45);  /* 青い膜。背景が透ける濃さ */
+  min-height: 100vh;
+  padding: 16px 14px 60px;
+}
+.card {
+  background: rgba(255, 255, 255, 0.08); /* ほんのり白をかけるだけ */
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  color: #fff; /* 中の文字を白に寄せる */
+}
+/* カード内の見出しも白く */
+.card h2,
+.card p {
+  color: #fff;
+}
+/* 🟠 タイトル（セブダオ神戸マラソン部）を落ち着いたオレンジに */
+header h1 {
+  color: #e07a3f;  /* 柔らかめのオレンジ (#e07a3f) */
+}
+
+/* 🤍 「応援チャットに参加する」ボタンの文字を白く */
+.link-btn.sub {
+  color: #ffffff;  /* 文字を白に */
+  background: rgba(0,144,208,0.25);  /* 淡い青背景で上品に */
+  border: 1px solid rgba(151,230,255,0.3);
+}
+/* タイトルを白文字＋電流っぽいエフェクトに */
+header h1 {
+  position: relative;
+  color: #ffffff;
+  text-align: center;
+  overflow: hidden;          /* はみ出たエフェクトを隠す */
+}
+
+/* 青い稲妻が流れてる風のレイヤー */
+header h1::after {
   content: "";
   position: absolute;
-  inset: -18px;               /* 発光を広げる */
-  border-radius: 9999px;
-  background: radial-gradient(circle,
-              rgba(255,255,120,0.95) 0%,     /* 中心ほぼ白っぽく光る黄色 */
-              rgba(255,230,0,0.75) 25%,
-              rgba(255,200,0,0.4) 50%,
-              rgba(255,230,0,0.15) 70%,
-              rgba(255,230,0,0) 85%);
-  filter: blur(14px) saturate(180%);  /* ぼかし＋彩度アップ */
-  animation: glowPulse 1.6s ease-in-out infinite;
+  left: -150%;
+  top: 0;
+  width: 150%;
+  height: 100%;
   pointer-events: none;
-  z-index: 0;
+  background: linear-gradient(120deg,
+    rgba(0, 255, 255, 0) 0%,
+    rgba(0, 200, 255, 0.8) 40%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(0, 200, 255, 0.8) 60%,
+    rgba(0, 255, 255, 0) 100%
+  );
+  mix-blend-mode: screen;    /* 背景といい感じに混ぜる */
+  animation: electric-flow 3s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(0,200,255,0.8));
 }
 
-/* --- 点滅アニメーション（より強く） --- */
-@keyframes glowPulse{
-  0%, 100% {
-    opacity: 0.45;
-    transform: scale(0.9);
-    filter: blur(12px) saturate(150%);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.15);
-    filter: blur(18px) saturate(200%);
-  }
+@keyframes electric-flow {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(150%); }
+}
+/* ⚡ タイトルを白文字＋オレンジの稲妻エフェクトに */
+header h1 {
+  position: relative;
+  color: #ffffff;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* オレンジの電流が流れているような光の帯 */
+header h1::after {
+  content: "";
+  position: absolute;
+  left: -150%;
+  top: 0;
+  width: 150%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(120deg,
+    rgba(255, 165, 0, 0) 0%,
+    rgba(255, 140, 0, 0.8) 40%,
+    rgba(255, 255, 200, 0.9) 50%,
+    rgba(255, 140, 0, 0.8) 60%,
+    rgba(255, 165, 0, 0) 100%
+  );
+  mix-blend-mode: screen;
+  animation: electric-flow 3s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(255,140,0,0.8));
+}
+
+@keyframes electric-flow {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(150%); }
+}
+/* ロゴをタイトルの上に乗せて、電流と一緒に流すバージョン */
+header {
+  position: relative;
+}
+
+/* ここで前のアニメを上書きする */
+/* ⚡ 稲妻エフェクトの上を走る大きな靴ロゴ */
+/* ⚡ 稲妻と完全に同調して走る靴ロゴ */
+/* タイトルの中だけを走る靴ロゴにする */
+header h1 {
+  position: relative;  /* 中で絶対配置できるようにする */
+  color: #fff;
+  text-align: center;
+  overflow: hidden;    /* はみ出しかけたロゴを隠す */
+}
+
+/* 🌠 流れ星モード：靴は消して、尾だけ走らせる */
+.logo {
+  position: absolute;
+  top: -35px;
+  left: 0;
+  width: 105px;
+  z-index: 9999;
+  opacity: 0; /* 👟靴を完全に非表示 */
+  pointer-events: none;
+  animation: logo-ride 1.14s linear infinite; /* 動きは維持（尾の基準） */
+}
+
+/* 💫 尾（流れ星の光） */
+.logo::after {
+  content: "";
+  position: absolute;
+  top: 35%;
+  left: 0;
+  width: 160px;
+  height: 20px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 200, 80, 1),
+    rgba(255, 150, 0, 0.7),
+    rgba(255, 150, 0, 0)
+  );
+  filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  animation: tail-flow 1.14s linear infinite;
+}
+
+/* 流れ星が走る動き（タイトル幅内） */
+@keyframes logo-ride {
+  0%   { left: 0; }
+  100% { left: calc(100% - 105px); }
+}
+
+/* 尾の明滅タイミング（短く光って消える） */
+@keyframes tail-flow {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 
-@media (max-width: 520px){
-  .chat-logo{ height: 66px; }           /* モバイルもバランス取る */
-  .chat-btn::after{ inset:-10px; filter: blur(7px); }
+/* 🏃‍♂️ ランナー紹介の右横に靴のイラストを配置 */
+.runner-shoe {
+  position: absolute;
+  top: 68%;              /* ページ内でランナー紹介と縦位置を合わせる */
+  right: 6%;             /* 右端に寄せる（調整OK） */
+  transform: translateY(-50%);
+  z-index: 900;
 }
 
+.runner-shoe img {
+  width: 120px;          /* サイズ調整：小さく見せたいときは90px */
+  opacity: 0.9;
+  filter: drop-shadow(0 0 6px rgba(255,140,0,0.5)); /* オレンジの柔らかい影 */
+  animation: shoe-pulse 2.8s ease-in-out infinite;   /* 呼吸のように淡く点滅 */
+}
+
+/* 靴を淡く点滅させて存在感を出す */
+@keyframes shoe-pulse {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
 </style>
 </head>
 <body>
-  <div class="hero-bg"></div>
-  <div class="grain"></div>
-  <header class="site">
-    <div class="container site-inner">
-      <div class="logo-dot"></div>
-      <div class="site-title">セブダオ神戸マラソン部</div>
-      <nav class="nav">
-        <a class="btn ghost" href="#runners">ランナー紹介</a>
-        <a class="btn ghost" href="#links">リンク</a>
-        <a class="btn primary" id="chatBtn" href="https://discord.com/channels/823445725476159488/1168154165478969384" target="_blank" rel="noopener">チャットで応援する</a>
-      </nav>
-    </div>
-  </header>
-  <section class="hero">
-    <div class="container">
-      <h1>CEBUDAE KOBE MARATHON CLUB</h1>
-      <p class="sub">走る仲間がいる。走る理由がある。公式情報とコミュニティの窓口、そして当日までのカウントダウン。</p>
-      <div class="clock">
-        <div class="tick"><div class="num" id="d">--</div><div class="lab">DAYS</div></div>
-        <div class="tick"><div class="num" id="h">--</div><div class="lab">HOURS</div></div>
-        <div class="tick"><div class="num" id="m">--</div><div class="lab">MINUTES</div></div>
-        <div class="tick"><div class="num" id="s">--</div><div class="lab">SECONDS</div></div>
-      </div>
-    </div>
-  </section>
-  <section id="runners">
-    <div class="container">
-      <div class="grid cols-3" id="runnerGrid"></div>
-    </div>
-  </section>
-  <section id="links">
-    <div class="container grid" style="gap:18px">
-      <div class="card link-item">
-        <div>
-          <div style="font-weight:800">神戸マラソン 公式サイト</div>
-          <small>大会情報・コース・交通規制などの最新情報</small>
+  <div class="overlay">
+    <header>
+  <img src="assets/runninguclub.png" alt="セブダオランニングクラブロゴ" class="logo">
+  <h1>SEVEN 神戸マラソン部</h1>
+  <p>2025年11月16日（日）9:00 スタート</p>
+</header>
+
+
+    <!-- カウントダウン -->
+    <section class="card">
+      <div class="countdown-title">開催までのカウントダウン</div>
+      <div class="countdown" id="countdown">
+        <div class="cd-item">
+          <div class="cd-num" id="days">--</div>
+          <div class="cd-label">日</div>
         </div>
-        <a class="btn" href="https://kobe-marathon.net/2025/" target="_blank" rel="noopener">開く</a>
-      </div>
-      <div class="card link-item">
-        <div>
-          <div style="font-weight:800">セブダオ神戸マラソン部 チャット</div>
-          <small>参加者・応援のやり取り（Discord）</small>
+        <div class="cd-item">
+          <div class="cd-num" id="hours">--</div>
+          <div class="cd-label">時間</div>
         </div>
-        <a class="btn chat-btn"
-   href="https://discord.com/channels/823445725476159488/1168154165478969384"
-   target="_blank" rel="noopener">
- <img class="chat-logo" src="assets/runninguclub.png" alt="セブダオ神戸マラソン部 チャット">
-</a>
-
-
+        <div class="cd-item">
+          <div class="cd-num" id="minutes">--</div>
+          <div class="cd-label">分</div>
+        </div>
+        <div class="cd-item">
+          <div class="cd-num" id="seconds">--</div>
+          <div class="cd-label">秒</div>
+        </div>
       </div>
-    </div>
-  </section>
-  <footer>
-    <div class="container">
-      <span class="foot-card">© <span id="year"></span> CEBUDAE Kobe Marathon Club</span>
-    </div>
-  </footer>
+    </section>
+
+    <!-- リンク -->
+    <section class="card">
+      <div class="link-buttons">
+        <a class="link-btn" href="https://kobe-marathon.net/2025/" target="_blank" rel="noopener">
+          神戸マラソン公式サイトを見る
+        </a>
+        <a class="link-btn sub" href="https://discord.com/channels/823445725476159488/1168154165478969384" target="_blank" rel="noopener">
+          応援チャットに参加する
+        </a>
+      </div>
+    </section>
+
+    <!-- 選手紹介 -->
+    <section class="card">
+      <h2 style="font-size:.9rem; margin-bottom:10px;">出場ランナー紹介</h2>
+      <p style="font-size:.62rem; opacity:.8; margin-bottom:10px;">タップするとハーフマラソンの記録画像が表示されます。</p>
+
+      <div class="runner-list" id="runnerList">
+  <!-- yonechan -->
+  <div class="runner-card active" data-img="assets/IMG_0948.jpg" data-name="yonechan">
+    <div class="runner-name">yonechan</div>
+    <div class="runner-meta">2時間 5分</div>
+  </div>
+
+  <!-- ばんび -->
+  <div class="runner-card" data-img="assets/record_banbi.jpg" data-name="ばんび">
+    <div class="runner-name">ばんび</div>
+    <div class="runner-meta">2時間 35分</div>
+  </div>
+
+  <!-- モアイ -->
+  <div class="runner-card" data-img="assets/record_moai.jpg" data-name="モアイ">
+    <div class="runner-name">モアイ</div>
+    <div class="runner-meta">1時間 33分</div>
+  </div>
+</div>
+
+<!-- 靴イラスト配置エリア -->
+<div class="runner-shoe">
+  <img src="assets/runninguclub.png" alt="Running Shoe" />
+</div>
+
+
+
+
+      <div class="preview" id="preview">
+        <!-- 画像がないときのプレースホルダー -->
+        <div class="preview-placeholder">
+          ランナーをタップすると<br>ここにハーフのタイム画像が出ます。
+          <br>
+        </div>
+      </div>
+    </section>
+
+    <footer style="text-align:center; font-size:.55rem; opacity:.35; margin-top:16px;">
+      &copy; 2025 セブダオ神戸マラソン部
+    </footer>
+  </div>
+
   <script>
-    const raceDate = new Date('2025-11-17T09:00:00+09:00').getTime();
-    function updateCountdown(){
-      const now = Date.now();
-      let diff = Math.max(0, raceDate - now);
-      const d = Math.floor(diff / (1000*60*60*24)); diff -= d*24*60*60*1000;
-      const h = Math.floor(diff / (1000*60*60)); diff -= h*60*60*1000;
-      const m = Math.floor(diff / (1000*60)); diff -= m*60*1000;
-      const s = Math.floor(diff / 1000);
-      document.getElementById('d').textContent = d;
-      document.getElementById('h').textContent = String(h).padStart(2,'0');
-      document.getElementById('m').textContent = String(m).padStart(2,'0');
-      document.getElementById('s').textContent = String(s).padStart(2,'0');
-    }
-    setInterval(updateCountdown,1000);
-    updateCountdown();
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <script>
-    // 背景画像のパス自動検出（日本語ファイル名・配置場所揺れ対策）
-    (function(){
-      const candidatesRaw = [
-        'assets/bg-kobe.png',
-        'スクリーンショット 2025-11-01 15.58.25.png',
-        'assets/スクリーンショット 2025-11-01 15.58.25.png',
-        'images/スクリーンショット 2025-11-01 15.58.25.png'
-      ];
-      const candidates = candidatesRaw.map(p => encodeURI(p));
-      function tryLoad(url){
-        return new Promise(res => {
-          const img = new Image();
-          img.onload = () => res(true);
-          img.onerror = () => res(false);
-          img.src = url + '?v=' + Date.now(); // cache bust
-        });
->>>>>>> parent of 938cbbc (feat: runners split with right-side preview)
-      }
-      * { box-sizing: border-box; }
-      body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #d6e0ea; /* ←ページの下地だけ。これでOK */
-}
+    // ===== カウントダウン（秒ごと） =====
+    (function() {
+      // 神戸マラソン当日：2025-11-16 09:00 JST
+      const target = new Date('2025-11-16T09:00:00+09:00').getTime();
 
-/* これが消えてたから背景が変わって見えたやつ */
-.hero-bg {
-  background: url("assets/bg-kobe.png") center top / cover no-repeat;
-  min-height: 260px;
-}
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = target - now;
 
-      .site-inner {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 16px;
-      }
-
-      header { padding: 18px 0 0; }
-      .top-badge {
-        color: #fff;
-        margin-bottom: 4px;
-        font-weight: 500;
-      }
-      .title-title {
-        font-size: 40px;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        color: #fff;
-        text-shadow: 0 3px 18px rgba(0, 0, 0, 0.25);
-        margin-bottom: 4px;
-      }
-      .sublead {
-        color: rgba(255, 255, 255, 0.85);
-        margin-bottom: 18px;
-      }
-
-      /* カウントダウンの白カード */
-      .count-boxes {
-        display: flex;
-        gap: 18px;
-        margin-bottom: 30px;
-      }
-      .count-box {
-        background: #fff;
-        border-radius: 20px;
-        padding: 16px 20px;
-        width: 140px;
-        text-align: center;
-        box-shadow: var(--shadow);
-      }
-      .count-box .num {
-        font-size: 32px;
-        font-weight: 700;
-      }
-      .count-box .label {
-        font-size: 11px;
-        letter-spacing: 0.35em;
-      }
-
-      /* ===== ランナー紹介セクション ===== */
-     #runners {
-  margin-top: -36px;
-  margin-bottom: 26px;
-}
-
-.runner-shell {
-  display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
-  gap: 18px;
-  align-items: stretch;
-}
-
-
-      /* 左の3人のカード */
-      .runner-list {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-      .runner-btn {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        background: #fff;
-        border-radius: 16px;
-        padding: 10px 14px;
-        box-shadow: var(--shadow);
-        border: 2px solid transparent;
-        cursor: pointer;
-      }
-      .runner-btn.active {
-        border-color: #1060ff;
-      }
-      .runner-avatar {
-        width: 50px;
-        height: 50px;
-        border-radius: 9999px;
-        overflow: hidden;
-      }
-      .runner-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .runner-btn .txt { font-weight: 600; }
-
-      /* 右のプレビュー */
-      .runner-preview {
-        position: relative;
-        background: #fff;
-        border-radius: 26px;
-        box-shadow: var(--shadow);
-        min-height: 240px;
-        overflow: hidden;
-      }
-      .runner-preview-inner {
-        position: relative;
-        min-height: 240px;
-      }
-      .runner-preview-top {
-        position: absolute;
-        inset: 0;
-        height: 55%;
-        background: #b43b3b;
-      }
-      .runner-preview-bottom {
-        position: absolute;
-        inset: auto 0 0 0;
-        height: 45%;
-        background: rgba(0, 0, 0, 0.85);
-      }
-
-      /* 丸アイコンと名前 */
-      .runner-photo {
-        position: absolute;
-        left: 48px;
-        top: 58px;
-        width: 118px;
-        height: 118px;
-        border-radius: 9999px;
-        overflow: hidden;
-        border: 6px solid rgba(0, 0, 0, 0.3);
-        background: #ddd;
-        z-index: 6;
-      }
-      .runner-photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .runner-nameband {
-        position: absolute;
-        left: 48px;
-        bottom: 24px;
-        background: rgba(0, 0, 0, 0.35);
-        border-radius: 12px;
-        padding: 7px 18px;
-        color: #fff;
-        font-weight: 600;
-        z-index: 6;
-        white-space: nowrap;
-      }
-
-      /* ハーフマラソン記録ラベルと写真 */
-      #record-label {
-        position: absolute;
-        top: 16px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(255, 255, 255, 0.95);
-        color: #000;
-        padding: 8px 24px;
-        border-radius: 9999px;
-        font-weight: 700;
-        font-size: 14px;
-        z-index: 7;
-        pointer-events: none;
-      }
-      #record-photo {
-        position: absolute;
-        top: 70px;
-        right: 40px;
-        width: 360px;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.28);
-        z-index: 5;
-        pointer-events: none; /* 左のボタンが押せるように */
-      }
-      #record-photo img {
-        width: 100%;
-        display: block;
-      }
-
-      /* ===== 下のリンク2枚 ===== */
-      #links {
-        display: grid;
-        gap: 14px;
-        margin-bottom: 40px;
-      }
-      .link-card {
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 20px;
-        padding: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: var(--shadow);
-      }
-      .link-card .meta small { color: #555; }
-      .link-card .btn {
-        background: #fff;
-        border: 1px solid rgba(0, 0, 0, 0.12);
-        border-radius: 9999px;
-        padding: 6px 16px;
-        cursor: pointer;
-      }
-      /* 右下の靴アイコン */
-      .link-card.logo-right {
-        position: relative;
-      }
-      .link-card.logo-right::after {
-        content: "";
-        position: absolute;
-        right: 28px;
-        bottom: 12px;
-        width: 52px;
-        height: 52px;
-        background: url("assets/runningclub.png") center / cover no-repeat;
-        opacity: 1;
-      }
-
-      @media (max-width: 880px) {
-        .runner-shell { grid-template-columns: 1fr; }
-        .runner-preview { min-height: 360px; }
-        #record-photo {
-          position: static;
-          width: 90%;
-          margin: 160px auto 14px;
+        if (diff <= 0) {
+          document.getElementById('days').textContent = '0';
+          document.getElementById('hours').textContent = '0';
+          document.getElementById('minutes').textContent = '0';
+          document.getElementById('seconds').textContent = '0';
+          return;
         }
+
+        const day = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hour = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const sec = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = day;
+        document.getElementById('hours').textContent = hour.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = min.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = sec.toString().padStart(2, '0');
       }
-    </style>
-  </head>
-  <body>
-    <!-- ヒーロー：背景画像あり -->
-    <div class="hero-bg">
-      <div class="site-inner">
-        <header>
-          <p class="top-badge">● セブダオ神戸マラソン部</p>
-          <h1 class="title-title">CEBUDAE KOBE MARATHON CLUB</h1>
-          <p class="sublead">走る仲間がいる。走る理由がある。公式情報とコミュニティの窓口、そして当日までのカウントダウン。</p>
 
-          <!-- カウントダウン -->
-          <div class="count-boxes">
-            <div class="count-box">
-              <div class="num">15</div><div class="label">DAYS</div>
-            </div>
-            <div class="count-box">
-              <div class="num">15</div><div class="label">HOURS</div>
-            </div>
-            <div class="count-box">
-              <div class="num">29</div><div class="label">MINUTES</div>
-            </div>
-            <div class="count-box">
-              <div class="num">50</div><div class="label">SECONDS</div>
-            </div>
-          </div>
-        </header>
-      </div>
-    </div>
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    })();
 
-    <main class="site-inner">
-      <!-- ランナー紹介 -->
-      <section id="runners">
-        <div class="runner-shell">
-          <!-- 左の3人 -->
-          <div class="runner-list">
-            <button
-              class="runner-btn active"
-              data-name="yonechan"
-              data-sub="セブダオ神戸マラソン部"
-              data-avatar="assets/IMG_0973.jpg"
-              data-record-img="assets/IMG_0948.jpg"
-            >
-              <div class="runner-avatar">
-                <img src="assets/IMG_0973.jpg" alt="">
-              </div>
-              <div class="txt">yonechan</div>
-            </button>
+    // ===== ランナー画像切り替え =====
+    (function() {
+      const list = document.getElementById('runnerList');
+      const preview = document.getElementById('preview');
 
-            <button
-              class="runner-btn"
-              data-name="ばんび"
-              data-sub="セブダオ神戸マラソン部"
-              data-avatar="assets/IMG_0975.jpg"
-              data-record-img="assets/record_banbi.jpg"
-            >
-              <div class="runner-avatar">
-                <img src="assets/IMG_0975.jpg" alt="">
-              </div>
-              <div class="txt">ばんび</div>
-            </button>
+      list.addEventListener('click', function(e) {
+        const card = e.target.closest('.runner-card');
+        if (!card) return;
 
-            <button
-              class="runner-btn"
-              data-name="Happy⭐︎MOAI"
-              data-sub="セブダオ神戸マラソン部"
-              data-avatar="assets/IMG_0974.jpg"
-              data-record-img="assets/record_moai.jpg"
-            >
-              <div class="runner-avatar">
-                <img src="assets/IMG_0974.jpg" alt="">
-              </div>
-              <div class="txt">Happy⭐︎MOAI</div>
-            </button>
-          </div>
+        // active切り替え
+        document.querySelectorAll('.runner-card').forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
 
-          <!-- 右のカード -->
-          <div class="runner-preview">
-            <div class="runner-preview-inner">
-              <div class="runner-preview-top"></div>
-              <div class="runner-preview-bottom"></div>
+        const imgSrc = card.getAttribute('data-img');
+        const name = card.getAttribute('data-name') || '';
 
-              <div class="runner-photo">
-                <img id="previewAvatar" src="assets/IMG_0973.jpg" alt="">
-              </div>
-              <div class="runner-nameband" id="previewName">
-                yonechan セブダオ神戸マラソン部
-              </div>
-
-              <div id="record-label">ハーフマラソン記録</div>
-              <div id="record-photo">
-                <img id="record-photo-img" src="assets/IMG_0948.jpg" alt="記録写真">
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 下のリンク2つ -->
-      <section id="links">
-        <div class="link-card">
-          <div class="meta">
-            <div style="font-weight: 800;">神戸マラソン 公式サイト</div>
-            <small>大会情報・コース・交通規制などの最新情報</small>
-          </div>
-          <a class="btn" href="https://kobe-marathon.net/2025/" target="_blank" rel="noopener">開く</a>
-        </div>
-
-        <div class="link-card logo-right">
-          <div class="meta">
-            <div style="font-weight: 800;">セブダオ神戸マラソン部 チャット</div>
-            <small>参加者・応援のやり取り（Discord）</small>
-          </div>
-          <a class="btn" href="https://discord.com" target="_blank" rel="noopener">開く</a>
-        </div>
-      </section>
-    </main>
-
-    <script>
-      // 左のボタン → 右を切り替え
-      const buttons = document.querySelectorAll(".runner-btn");
-      const previewName = document.getElementById("previewName");
-      const previewAvatar = document.getElementById("previewAvatar");
-      const recordImg = document.getElementById("record-photo-img");
-      const recordLabel = document.getElementById("record-label");
-      const recordPhoto = document.getElementById("record-photo");
-
-      buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          buttons.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-
-          const name = btn.dataset.name || "";
-          const sub = btn.dataset.sub || "";
-          previewName.textContent = name + " " + sub;
-
-          if (btn.dataset.avatar) {
-            previewAvatar.src = btn.dataset.avatar;
-          }
-
-          if (btn.dataset.recordImg) {
-            recordImg.src = btn.dataset.recordImg;
-            recordLabel.style.display = "block";
-            recordPhoto.style.display = "block";
-          } else {
-            recordLabel.style.display = "none";
-            recordPhoto.style.display = "none";
-          }
-        });
+        // プレビュー書き換え
+        preview.innerHTML = '';
+        if (imgSrc) {
+          const img = document.createElement('img');
+          img.src = imgSrc;
+          img.alt = name + 'のハーフマラソンタイム';
+          preview.appendChild(img);
+        } else {
+          const p = document.createElement('div');
+          p.className = 'preview-placeholder';
+          p.textContent = '画像が未設定です';
+          preview.appendChild(p);
+        }
       });
-    </script>
-  </body>
+    })();
+  </script>
+</body>
 </html>
